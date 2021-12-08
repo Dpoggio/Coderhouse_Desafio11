@@ -1,5 +1,5 @@
 {
-  "name": "coderhouse_desafio10",
+  "name": "Coderhouse_Desafio11",
   "version": "1.0.0",
   "description": "Mocks y Normalizacion",
   "main": "server.js",
@@ -13,15 +13,16 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Dpoggio/Coderhouse_Desafio10.git"
+    "url": "git+https://github.com/Dpoggio/Coderhouse_Desafio11.git"
   },
   "author": "Demian Poggio",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Dpoggio/Coderhouse_Desafio10/issues"
+    "url": "https://github.com/Dpoggio/Coderhouse_Desafio11/issues"
   },
-  "homepage": "https://github.com/Dpoggio/Coderhouse_Desafio10#readme",
+  "homepage": "https://github.com/Dpoggio/Coderhouse_Desafio11#readme",
   "dependencies": {
+    "bcrypt": "^5.0.1",
     "connect-mongo": "^4.6.0",
     "express": "^4.17.1",
     "express-handlebars": "^5.3.4",
@@ -31,6 +32,8 @@
     "mongoose": "^6.0.13",
     "mysql": "^2.18.1",
     "normalizr": "^3.6.1",
+    "passport": "^0.5.0",
+    "passport-local": "^1.0.0",
     "socket.io": "^4.3.1",
     "sqlite3": "^5.0.2"
   },

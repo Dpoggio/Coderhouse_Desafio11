@@ -7,6 +7,7 @@ const session = require('express-session')
 const { normalize, schema } = require("normalizr");
 const MongoStore = require('connect-mongo')
 const conn = require('./lib/connections.js')
+const passport = require('./lib/auth.js')
 
 
 /**** CONSTANTES ****/
@@ -42,6 +43,15 @@ async function getMensajes(){
     return mensajesNorm
 }
 
+// Login
+function checkAuth(req, res, next) {
+    if (req.isAuthenticated()) {
+        next();
+    } else {
+        res.redirect("/login");
+    }
+}
+
 // Configuracion WebSocket
 io.on('connection', async socket => {
     console.log('Nuevo cliente conectado')
@@ -74,6 +84,7 @@ app.set('views', __dirname + '/views')
 
 
 // Middleware incio
+
 app.use(express.json())
 app.use('/', express.static(__dirname + '/public'))
 app.use(express.urlencoded({extended: true}))
@@ -87,31 +98,41 @@ app.use(session({
         maxAge: 10*60*1000
     }
 }))
+app.use(passport.initialize());
+app.use(passport.session());
 
 // Routers
-app.get('/', (req, res) => {
-    if(req.session.nombre){
-        res.render('main', { nombre: req.session.nombre })
+app.get('/', checkAuth, (req, res) => {
+    const user = req.user
+    res.render('main', { 
+        nombre: user.nombre,
+        mail: user.mail
+    })
+})
+
+// Login
+app.get('/login', (req, res) => {
+    if (req.isAuthenticated()){
+        res.redirect('/')
     } else {
-        res.redirect('/login')
+        res.render('login')
     }
 })
+app.post('/login', passport.authenticate('login', { successRedirect: '/', failureRedirect: '/fail-login' }))
+app.get('/fail-login', (req, res) => res.render('faillogin'))
 
-app.get('/login', (req, res) => {
-    res.render('login')
-})
+// Registracion
+app.get('/signup', (req, res) => res.render('signup'))
+app.post('/signup', passport.authenticate('signup', { successRedirect: '/', failureRedirect: '/fail-signup' }))
+app.get('/fail-signup', (req, res) => res.render('failsignup'))
 
-app.post('/login', (req, res) => {
-    const nombre = req.body.nombre
-    req.session.nombre = nombre
-    res.redirect('/')
-})
+
 
 app.get('/logout', (req, res) => {
-    const nombre = req.session.nombre
-    req.session.destroy(err => {
-        res.render('logout', { nombre })
-    })
+    const nombre = req.user.nombre
+    req.logout()
+    res.render('logout', { nombre })
+    
 })
 
 app.get('/productos-test', (req, res) => {
