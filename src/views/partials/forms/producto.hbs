@@ -1,0 +1,19 @@
+<form onsubmit="return agregarProducto(this)">
+
+    <div class="form-group">
+        <label for="title"><i><b>Nombre</b></i></label>
+        <input id="title" class="form-control" type="text" name="title" required/>
+    </div>
+
+    <div class="form-group">
+        <label for="price"><i><b>Precio</b></i></label>
+        <input id="price" class="form-control" type="number" step=any name="price" required/>
+    </div>
+
+    <div class="form-group">
+        <label for="thumbnail"><i><b>Foto URL</b></i></label>
+        <input id="thumbnail" class="form-control" type="text" name="thumbnail" required/>
+    </div>
+
+    <input type="submit" class="btn btn-success mt-3 mb-5" value="Enviar">
+</form>

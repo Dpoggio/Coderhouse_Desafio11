@@ -1,0 +1,31 @@
+<h1 style="color:blue;">Centro de Mensajes</h1>
+<br>
+
+<script src="/js/chat.js"></script>
+<form onsubmit="return agregarMensaje(this)">
+    <label for="mail"><i><b>Mail</b></i></label>
+    <input id="mail" class="form-control" type="text" name="mail" required/>
+    <label for="nombre"><i><b>Nombre</b></i></label>
+    <input id="nombre" class="form-control" type="text" name="nombre" required/>
+    <label for="apellido"><i><b>Apellido</b></i></label>
+    <input id="apellido" class="form-control" type="text" name="apellido" required/>
+    <label for="edad"><i><b>Edad</b></i></label>
+    <input id="edad" class="form-control" type="text" name="edad" required/>
+    <label for="alias"><i><b>Alias</b></i></label>
+    <input id="alias" class="form-control" type="text" name="alias" required/>
+    <label for="avatar"><i><b>Avatar</b></i></label>
+    <input id="avatar" class="form-control" type="text" name="avatar"/>
+    <hr>
+    <div id="mensajes" style="height:450px;overflow-y: scroll;"></div>
+
+    <div class="input-group">
+        <input id="mensaje" type="text" class="form-control" name="mensaje" placeholder="Ingresa un mensaje..." required/>
+        <span class="input-group-btn">
+            <input type="submit" class="btn btn-primary" value="Enviar">
+        </span>
+    </div>
+
+</form>
+
+
+<div id="chat"></div>

@@ -1,0 +1,28 @@
+{{#if mensajes }}
+<style>
+    .avatar {
+        vertical-align: middle;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+    }
+</style>
+<h3>Procentaje de compresion: {{ porcentaje }} %</h3>
+<div class="table-responsive">
+    <table>
+        {{#each mensajes.mensajes }}
+        <tr>
+            <td>
+                <b style="color:blue">{{this.author.mail}}</b> 
+                [<span style="color:brown">{{ formatDate this.fecha }}</span>]:
+                <i style="color:green">{{this.text}}</i>
+                <img src="{{this.author.avatar}}" alt="Avatar" class="avatar">
+            </td>
+        </tr>
+        {{/each}}
+    </table>
+</div>
+{{ else }}
+<h3 class="alert alert-warning">No hay mensajes</h1>
+{{/if}}
+<br>

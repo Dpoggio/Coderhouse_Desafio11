@@ -1,0 +1,22 @@
+<script src="/js/socket.js"></script>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <span class="navbar-brand">Bienvenido {{ nombre }}!</span>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto"></ul>
+    <a class="btn btn-outline-warning my-2 my-sm-0" href="/logout">Desconectarse</a>
+  </div>
+</nav>
+
+<div class="container mt-3">
+    <div class="jumbotron">
+        {{> productos }}
+    </div>
+</div>
+
+<div class="container mt-3">
+    <div class="jumbotron">
+        {{> chat }}
+    </div>
+</div>
