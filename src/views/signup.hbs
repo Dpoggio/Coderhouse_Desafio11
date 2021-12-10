@@ -1,54 +1,22 @@
-<!DOCTYPE html>
-<html lang="es">
-
-<head>
-  <title>Login</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" href="favicon.ico" type="image/x-icon" />
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
-</head>
-
-<body>
-
-  <div class="container my-5">
+<div class="container mt-3">
     <div class="jumbotron">
-
-      <h1>SIGNUP</h1>
-      <br>
-      <form class="form" role="form" action="/signup" method="post" autocomplete="off">
-
-        <div class="form-group">
-          <input name='username' placeholder="Nombre" class="form-control" type="text" required>
-        </div>
-        <div class="form-group">
-          <input name='password' placeholder="Password" class="form-control" type="password" required>
-        </div>
-
+        <h1 style="color:blue;">Registro de Usuario</h1>
         <br>
+        <form method="post">
+            <div class="form-group">
+                <label for="username"><i><b>Usuario</b></i></label>
+                <input id="username" class="form-control" type="text" name="username" required />
 
-        <div class="form-group">
-          <input name='firstName' placeholder="firstname" class="form-control" type="text" required>
-        </div>
+                <label for="password"><i><b>Contraseña</b></i></label>
+                <input id="password" class="form-control" type="password" name="password" required />
 
-        <div class="form-group">
-          <input name='lastName' placeholder="lastname" class="form-control" type="text" required>
-        </div>
+            </div>
 
-        <div class="form-group">
-          <input name='email' placeholder="email" class="form-control" type="email" required>
-        </div>
+            <input type="submit" class="btn btn-success mt-3 mb-5" value="Registrar">
+        </form>
 
-        <div class="form-group">
-          <input class="btn btn-success my-3" type="submit" value="Singup">
-        </div>
-      </form>
+        <hr/>
 
+        <a href='/login' class="btn btn-success mt-3 mb-5">Ir a Login</a>
     </div>
-  </div>
-
-</body>
-
-</html>
+</div>
