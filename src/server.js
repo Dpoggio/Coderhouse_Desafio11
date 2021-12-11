@@ -103,11 +103,8 @@ app.use(passport.session());
 
 // Routers
 app.get('/', checkAuth, (req, res) => {
-    const user = req.user
-    res.render('main', { 
-        nombre: user.nombre,
-        mail: user.mail
-    })
+    const username = req.user.username
+    res.render('main', { nombre: username })
 })
 
 // Login
@@ -129,9 +126,9 @@ app.get('/fail-signup', (req, res) => res.render('failsignup'))
 
 
 app.get('/logout', (req, res) => {
-    const nombre = req.user.nombre
+    const username = req.user.username
     req.logout()
-    res.render('logout', { nombre })
+    res.render('logout', { nombre: username })
     
 })
 
